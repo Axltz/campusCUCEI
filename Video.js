@@ -12,8 +12,7 @@ export default class Video extends Component {
 
         <View style={styles.webviewCaja}>
           <WebView
-            source={{ uri: 'https://cuceimobile.space/videoCucei.html' }}
-            style={styles.webview}
+            source={require('./html/videoCucei.html')}            style={styles.webview}
             javaScriptEnabled={true}
             domStorageEnabled={true}
           />
