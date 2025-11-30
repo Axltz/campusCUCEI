@@ -1,0 +1,115 @@
+[cite\_start]Aquí tienes la transcripción del documento[cite: 1]:
+
+## Logueo 2: Persistencia de Datos
+
+[cite\_start]A menudo necesitamos almacenar datos en el celular y para eso usaremos algo llamado **AsyncStorage** [cite: 3][cite\_start], que es un agregado a **React Native** para almacenar datos de forma segura y fácil[cite: 3].
+
+Para eso nos iremos a la siguiente página:
+[cite\_start]`https://react-native-async-storage.github.io/async-storage/docs/install/#android--jos` [cite: 4, 5]
+[cite\_start]e instalamos la librería[cite: 6].
+
+### Almacenar Datos
+
+[cite\_start]En Login importamos la librería[cite: 7]:
+[cite\_start]`import AsyncStorage from '@react-native-async-storage/async-storage';` [cite: 8]
+
+[cite\_start]En la parte donde mandan la variable a la otra ventana (`navigation.naviagate...`) [cite: 9] [cite\_start]agregan este código[cite: 10]:
+
+```
+try {
+  [cite_start]await AsyncStorage.setItem('Datos', variable con los datos separados del json); [cite: 11, 12]
+[cite_start]} catch (e) { [cite: 13]
+  [cite_start]// saving error [cite: 15]
+}
+```
+
+[cite\_start]Donde **"Datos"** es el nombre del archivo que se guarda en el celular [cite: 16] [cite\_start]y **"variable con los datos separados del json"** son los datos que se guardaron en el archivo Datos [cite: 17][cite\_start], que en este caso ya son todos estos[cite: 17]:
+
+```json
+[cite_start]{"carrera":"DOEC","nombre":"MARIO JIMENEZ RODRIGUEZ","codigo":"92492346","ciclo":"2021-B","campus":"CUCEI", "situacion":"EG"} {"creditos":165,"creditos Requeridos":153, "certificado":"PARCIAL","promedio":96.25,"materias":[ [cite: 18]
+  [cite_start]{"nrc":"68122","fecha":"2017-06-02","calificacion": "90(NOVENTA)","tipo":"ORDINARIO (OE)","descripcion":"SEMINARIO INTERDISCIPLINARIO DE INVESTIGACION I","ciclo":"2017A","clave":"16732","creditos":6}, [cite: 18, 19, 20]
+  [cite_start]{"nrc":"73811","fecha":"2017-05-25","calificacion":"100(CIEN)","tipo":"ORDINARIO (OE)","descripcion":"TOPICOS SELECTOS EN SISTEMAS ROBOTICOS","ciclo":"2017A","clave":"16811","creditos":6}, [cite: 20, 21, 22]
+  [cite_start]{"nrc":"44500","fecha":"2017-12-10","calificacion":"100(CIEN)","tipo":"ORDINARIO (OE)","descripcion":"SEMINARIO INTERDISCIPLINARIO DE INVESTIGACION II","ciclo":"2017B","clave":"I6733","creditos":6}, [cite: 22, 23, 24]
+  [cite_start]{"nrc":"121698","fecha":"2017-12-08","calificacion":"90(NOVENTA)","tipo":"ORDINARIO (OE)","descripcion":"SISTEMAS NO LINEALES","ciclo":"2017B","clave":"16805","creditos":6}, [cite: 24, 25, 26]
+  [cite_start]{"nrc":"SN001","fecha":"2018-05-31","calificacion":"100(ACREDITADO)","tipo":"ORDINARIO (OE)","descripcion":"SEMINARIO DE AVANCE DE INVESTIGACION I","ciclo":"2018A","clave":"13098","creditos":6}, [cite: 26, 27, 28]
+  [cite_start]{"nrc":"SN001","fecha":"2018-12-12","calificacion":"100(ACREDITADO)","tipo":"ORDINARIO (OE)","descripcion":"SEMINARIO DE AVANCE DE INVESTIGACION II","ciclo":"2018B","clave":"13099","creditos":6}, [cite: 28, 29, 30]
+  [cite_start]{"nrc":"133442","fecha":"2018-12-08", "calificacion":"100(CIEN)","tipo":"ORDINARIO (OE)","descripcion":"TOPICOS DE PROCESAMIENTOS DE IMAGENES","ciclo":"2018B","clave":"16769","creditos":6}, [cite: 30, 31, 32]
+  [cite_start]{"nrc":"153353","fecha":"2019-05-31","calificacion":"90(NOVENTA)","tipo":"ORDINARIO (OE)","descripcion":"DISEÑO Y PROGRAMACION PARALELA DE SISTEMAS MULTICORE","ciclo":"2019A","clave":"I6751","creditos":6}, [cite: 32, 33]
+  [cite_start]{"nrc":"SN002","fecha":"2019-05-31","calificacion":"100(ACREDITADO)","tipo":"ORDINARIO (OE)","descripcion":"SEMINARIO DE AVANCE DE INVESTIGACION III","ciclo":"2019A","clave":"13100","creditos":6}, [cite: 33, 34, 35]
+  [cite_start]{"nrc":"SN001","fecha":"2019-12-06","calificacion":"100(ACREDITADO)","tipo":"ORDINARIO (OE)","descripcion":"SEMINARIO DE AVANCE DE INVESTIGACION IV","ciclo":"2019B","clave":"13101","creditos":6}, [cite: 35, 36, 37]
+  [cite_start]{"nrc":"166655","fecha":"2020-05-29","calificacion":"100(CIEN)","tipo":"ORDINARIO","descripcion":"ROBOTICA","ciclo":"2020A","clave":"16803","creditos":6}, [cite: 37, 38]
+  [cite_start]{"nrc":"145630","fecha":"2020-05-29","calificacion":"100(CIEN)","tipo":"ORDINARIO (OE)","descripcion":"TOPICOS SELECTOS EN VISION COMPUTACIONAL", "ciclo":"2020A","clave":"16812","creditos":6}, [cite: 38, 39, 40]
+  [cite_start]{"nrc":"SN001","fecha":"2021-06-04","calificacion":"100(ACREDITADO)","tipo":"ORDINARIO (OE)","descripcion":"ACTIVIDADES COMPLEMENTARIAS I","ciclo":"2021A","clave":"IC393","creditos":6}, [cite: 40, 41]
+  [cite_start]{"nrc":"SN002","fecha":"2021-06-04","calificacion":"100(ACREDITADO)","tipo":"ORDINARIO (OE)","descripcion":"ACTIVIDADES COMPLEMENTARIAS II","ciclo":"2021A","clave":"IC394","creditos":6}, [cite: 41, 42, 43]
+  [cite_start]{"nrc":"SN003","fecha":"2021-06-04","calificacion":"100 (ACREDITADO)", "tipo":"ORDINARIO (OE)","descripcion":"ACTIVIDADES COMPLEMENTARIAS III","ciclo":"2021A","clave":"IC395","creditos":6}, [cite: 43, 44, 45]
+  [cite_start]{"nrc":"SN001", "fecha":"2021-12-15","calificacion":"100 (ACREDITADO)","tipo":"ORDINARIO (OE)","descripcion":"TESIS DOCTORAL", "ciclo":"2021B","clave":"16576","creditos":75} [cite: 45, 46]
+],
+"creditosAreas":[
+  [cite_start]{"area":"BASICO COMUN","creditos":12,"faltantes":0,"requeridos":12}, [cite: 46, 68]
+  [cite_start]{"area":"ESPECIALIZANTE SELECTIVA","creditos":24,"faltantes":0,"requeridos":12}, [cite: 46, 69]
+  [cite_start]{"area":"ESPECIALIZANTE OBLIGATORIA","creditos":117,"faltantes":0,"requeridos":117}, [cite: 46, 70]
+  [cite_start]{"area":"OPTATIVA ABIERTA","creditos":12,"faltantes":0,"requeridos":12} [cite: 46, 71]
+]
+}
+```
+
+So. [cite\_start]Todos estos datos se guardan en el archivo **Datos**[cite: 47]. [cite\_start]Ahora que están almacenados ya no es necesario volver a consultar el script[cite: 47]. [cite\_start]Ahora leen todo desde el archivo[cite: 48].
+
+-----
+
+### Leer Datos
+
+¿Y cómo leen el contenido del archivo **Datos**? [cite\_start]Así[cite: 48]:
+
+```
+try {
+  [cite_start]const value = await AsyncStorage.getItem('my-key'); [cite: 49, 50]
+  [cite_start]if (value !== null) { [cite: 51]
+    [cite_start]// value previously stored [cite: 52]
+  }
+[cite_start]} catch (e) { [cite: 54]
+  [cite_start]// error reading value [cite: 56]
+}
+```
+
+[cite\_start]En la variable **`value`** se carga el json[cite: 57].
+
+[cite\_start]Con esto, hacen 2 cosas[cite: 57]:
+
+1.  [cite\_start]En el archivo donde están los iconos del directorio, video, etc., cuando le den click al icono del alumno deben checar si existe el archivo **Datos**[cite: 57].
+2.  [cite\_start]Si existe, no pasan por login, y cargan los datos desde el archivo **Datos** y los muestran y grafican[cite: 57].
+
+[cite\_start]Si por el contrario **no existe el archivo** o sea, regresa **`null`** en `getItem`, mandan llamar a login y sigue el ciclo[cite: 58].
+
+-----
+
+### Deslogeo
+
+[cite\_start]Para deslogearse es con[cite: 58]:
+
+```
+try {
+  [cite_start]await AsyncStorage.removeItem('Datos') [cite: 59, 60, 61]
+[cite_start]} catch(e) { [cite: 62]
+  [cite_start]// remove error [cite: 64]
+}
+```
+
+[cite\_start]Y esto borra el archivo **Datos** y su contenido[cite: 65].
+
+-----
+
+### Qué deben graficar
+
+[cite\_start]Deben graficar[cite: 66]:
+
+  * [cite\_start]Créditos para salir de la carrera, contra créditos obtenidos[cite: 67].
+  * Las áreas de créditos:
+      * [cite\_start]"BASICO COMUN" [cite: 68]
+      * [cite\_start]"ESPECIALIZANTE SELECTIVA" [cite: 69]
+      * [cite\_start]"ESPECIALIZANTE OBLIGATORIA" [cite: 70]
+      * [cite\_start]"OPTATIVA ABIERTA" [cite: 71]
+
+[cite\_start]Además de poner un botón en alumno, o como se que le llamaron donde grafican, que al dar click muestre las materias con su calificación[cite: 72].
+
+Por favor pregunten cualquier cosa. [cite\_start]Saludos\! [cite: 73]
